@@ -12,7 +12,7 @@ struct SEnumName{
 };
 
 template <typename EnumType>  
-char* enumToStr(EnumType value)
+const char* enumToStr(EnumType value)
 {
     std::string rtn = "Invalid Enum";
     int count = SEnumName<EnumType>::Map.size();
