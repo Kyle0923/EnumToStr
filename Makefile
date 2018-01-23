@@ -1,6 +1,15 @@
-all:
-	g++ enumToStr.o
-c98:
-	g++ -c enumToStr.cpp
-c11:
-	g++ -std=c++11 -c enumToStr.cpp
+CXX = g++ -std=c++11
+HEADER = EnumToStr.h
+INC = .
+usrCode = main.cpp
+output = main
+
+all: $(usrCode:.cpp=.o)
+	$(CXX) $(usrCode:.cpp=.o) -I$(INC) -o $(output)
+
+%.o: %.cpp
+	$(CXX) -c $<
+
+clean:
+	rm $(output) $(usrCode:.cpp=.o)
+>>>>>>> c11
