@@ -1,18 +1,21 @@
 #include <map>
 #include <string>
-#define CREATE_ENUM_MAP(enumT) template<>const std::map<int, std::string> SEnumName<enumT>::Map
+#include <iostream>
+#define CREATE_ENUM_MAP(enumT) template<> SEnumName<enumT>::SEnumName()
+#define MAP_ADD(val) Map[val] = #val
 
 enum MyEnum{
     app,baba,pp
 };
 
 template<typename EnumType>
-struct SEnumName{  
-    static const std::map<int, std::string> Map;  
+struct SEnumName{
+    SEnumName();
+    static std::map<int, std::string> Map;  
 };
 
 template <typename EnumType>  
-char* enumToStr(EnumType value)
+const char* enumToStr(EnumType value)
 {
     std::string rtn = "Invalid Enum";
     int count = SEnumName<EnumType>::Map.size();
@@ -22,10 +25,14 @@ char* enumToStr(EnumType value)
     return rtn.c_str();  
 }  
 
-// template<>const std::map<int, std::string> SEnumName<MyEnum>::Map
-CREATE_ENUM_MAP(MyEnum) = 
+CREATE_ENUM_MAP(MyEnum)
 {
-    {app, "Status1"},
-    {baba, "Status2"},
-    {pp, "Status3"},
-};
+    MAP_ADD(app);
+    MAP_ADD(baba);
+    MAP_ADD(pp);
+}
+SEnumName<MyEnum> MyEnumObj;
+
+int main(){
+    std::cout << enumToStr<MyEnum>(app);
+}

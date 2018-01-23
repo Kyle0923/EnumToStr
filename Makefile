@@ -1,3 +1,5 @@
+all:
+	g++ enumToStr.o
 c98:
 	g++ -c enumToStr.cpp
 c11:
