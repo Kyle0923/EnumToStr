@@ -8,8 +8,7 @@ all: $(usrCode:.cpp=.o)
 	$(CXX) $(usrCode:.cpp=.o) -I$(INC) -o $(output)
 
 %.o: %.cpp
-	$(CXX) -c $<
+	$(CXX) -c $< -o $@
 
 clean:
 	rm $(output) $(usrCode:.cpp=.o)
->>>>>>> c11

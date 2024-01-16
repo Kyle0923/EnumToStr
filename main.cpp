@@ -1,4 +1,4 @@
-/* This file is a sample code of 
+/* This file is a sample code of
  * using libEnumToStr.a to print
  * a string representation of an
  * enumeration value.
@@ -19,16 +19,16 @@ enum MyEnum{
 // This is essentially a std::map<int, std::string> initialization list
 CREATE_ENUM_MAP(MyEnum)
 {
-	//use macro PAIR to create and insert a pair into map
-	//#define PAIR(element) {element, #element}
-	PAIR(eOne),
-	PAIR(eThree),
-	PAIR(eElev),
+    //use macro PAIR to create and insert a pair into map
+    //#define PAIR(element) {element, #element}
+    PAIR(eOne),
+    PAIR(eThree),
+    PAIR(eElev),
 };
 
 int main(){
-	std::cout << enumToStr<MyEnum>(1) << std::endl;
-	std::cout << enumToStr<MyEnum>(3) << std::endl;
-	std::cout << enumToStr<MyEnum>(11) << std::endl;
-	std::cout << enumToStr<MyEnum>(10) << std::endl;
+    std::cout << enumToStr<MyEnum>(1) << std::endl;
+    std::cout << enumToStr<MyEnum>(3) << std::endl;
+    std::cout << enumToStr<MyEnum>(11) << std::endl;
+    std::cout << enumToStr<MyEnum>(10) << std::endl;
 }

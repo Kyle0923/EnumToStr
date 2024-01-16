@@ -11,21 +11,21 @@
 #define PAIR(element) {element, #element}
 
 template<typename EnumType>
-struct SEnumName{  
-    static const std::map<int, std::string> Map;  
+struct SEnumName{
+    static const std::map<int, std::string> Map;
 };
 
-template <typename EnumType>  
+template <typename EnumType>
 const char* enumToStr(int value);
 
 
-template <typename EnumType>  
+template <typename EnumType>
 const char* enumToStr(int value)
 {
     if(SEnumName<EnumType>::Map.find(value) != SEnumName<EnumType>::Map.end()){
         return (SEnumName<EnumType>::Map).at(value).c_str();
     } else {
-	return "unspecified value";
+        return "unspecified value";
     }
 }
 
